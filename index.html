@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Umuda.org | Coming Soon</title>
+  <title>Umuda.org | Humanitarian Aid Hub</title>
   <style>
     :root {
-      color-scheme: light dark;
-      --bg: #0d1117;
-      --panel: #161b22;
-      --text: #e6edf3;
-      --accent: #4fd1c5;
-      --muted: #8b949e;
+      color-scheme: light;
+      --bg: #0c1a28;
+      --panel: rgba(7, 13, 20, 0.82);
+      --text: #e8f0f7;
+      --accent: #f6b43c;
+      --accent-2: #4fd1c5;
+      --muted: #b6c3d2;
+      --border: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -25,54 +27,82 @@
       align-items: center;
       justify-content: center;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at 20% 20%, rgba(79, 209, 197, 0.12), transparent 25%),
-        radial-gradient(circle at 80% 0%, rgba(111, 132, 255, 0.14), transparent 30%),
-        var(--bg);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(79, 209, 197, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 0%, rgba(246, 180, 60, 0.22), transparent 32%),
+        linear-gradient(145deg, #0c1a28 0%, #0a1221 40%, #0f1d2e 100%);
       color: var(--text);
       padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-ring {
+      position: absolute;
+      inset: -200px;
+      background: radial-gradient(circle at 50% 50%, rgba(79, 209, 197, 0.07) 0, transparent 50%),
+        radial-gradient(circle at 30% 60%, rgba(246, 180, 60, 0.08) 0, transparent 40%);
+      filter: blur(14px);
+      pointer-events: none;
     }
 
     .card {
       background-color: var(--panel);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 18px;
-      max-width: 640px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 900px;
       width: 100%;
-      padding: 2.5rem 2rem;
+      padding: clamp(1.8rem, 2vw + 1rem, 3rem);
       box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.35),
-        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
-      text-align: center;
-      backdrop-filter: blur(6px);
+        0 30px 90px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      text-align: left;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(145deg, rgba(246, 180, 60, 0.06), rgba(79, 209, 197, 0.05));
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
     }
 
     .logo {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       color: var(--text);
-      margin-bottom: 1.4rem;
+      margin-bottom: 0.75rem;
     }
 
     .logo-mark {
       width: 52px;
       height: 52px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #4fd1c5, #6f84ff);
+      background: linear-gradient(135deg, #f6b43c, #4fd1c5);
       display: grid;
       place-items: center;
       color: #0d1117;
       font-weight: 800;
       font-size: 1.1rem;
-      box-shadow: 0 12px 32px rgba(79, 209, 197, 0.25);
+      box-shadow: 0 12px 32px rgba(246, 180, 60, 0.2);
     }
 
     h1 {
-      margin: 0 0 0.75rem;
-      font-size: clamp(1.8rem, 2vw + 1rem, 2.6rem);
+      margin: 0.4rem 0 0.75rem;
+      font-size: clamp(2rem, 2vw + 1.2rem, 3rem);
       letter-spacing: -0.02em;
       color: var(--text);
     }
@@ -80,42 +110,214 @@
     p {
       margin: 0.4rem 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 1.05rem;
     }
 
-    .highlight {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(246, 180, 60, 0.12);
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
     }
 
-    .pill {
+    .lede {
+      font-size: 1.1rem;
+      color: #d9e3ed;
+      max-width: 720px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.2rem 0 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 180ms ease;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #f6b43c, #e38e17);
+      border-color: rgba(246, 180, 60, 0.5);
+      color: #0d0e0f;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn.ghost:hover {
+      border-color: rgba(246, 180, 60, 0.4);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .cardlet {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cardlet h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.1rem;
+    }
+
+    .cardlet p {
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 12px;
+      background: rgba(79, 209, 197, 0.12);
+      color: var(--accent-2);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.7rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.9rem;
+      margin: 1.6rem 0 0.4rem;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .note {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
       padding: 0.55rem 0.95rem;
-      border-radius: 999px;
-      background: rgba(79, 209, 197, 0.08);
-      color: var(--accent);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
       margin: 1rem 0;
       font-weight: 600;
       letter-spacing: 0.01em;
+      border: 1px dashed rgba(246, 180, 60, 0.4);
+    }
+
+    .accent { color: var(--accent); font-weight: 700; }
+
+    @media (max-width: 720px) {
+      .card { padding: 1.6rem; }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <main class="card" aria-label="Umuda.org coming soon">
-    <div class="logo" aria-label="Umuda logo">
-      <div class="logo-mark">U</div>
-      <span>umuda.org</span>
+  <div class="glow-ring" aria-hidden="true"></div>
+  <main class="card" aria-label="Umuda.org relaunch">
+    <div class="content">
+      <div class="logo" aria-label="Umuda logo">
+        <div class="logo-mark">U</div>
+        <span>umuda.org</span>
+      </div>
+      <div class="eyebrow">Humanitarian aid ecosystem</div>
+      <h1>Connecting people to lifesaving support.</h1>
+      <p class="lede">
+        Umuda.org is being rebuilt as a trusted home for the humanitarian aid sector —
+        spotlighting local responders, verified organizations, and the resources people need when crises hit.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:hello@umuda.org">Partner with us</a>
+        <a class="btn ghost" href="#focus-areas">Explore our focus areas</a>
+      </div>
+
+      <div class="note" role="status">
+        We are collaborating with frontline teams to ensure every update is people-first, transparent, and ready to mobilize.
+      </div>
+
+      <section id="focus-areas" aria-label="Focus areas" class="grid">
+        <article class="cardlet">
+          <div class="tag">Rapid response</div>
+          <h3>Signal in the noise</h3>
+          <p>Clear, multi-language updates that elevate verified information and reduce misinformation during emergencies.</p>
+        </article>
+        <article class="cardlet">
+          <div class="tag">Local partners</div>
+          <h3>Community-led action</h3>
+          <p>Directories and mapping tools that help people find nearby aid providers, shelters, and essential services.</p>
+        </article>
+        <article class="cardlet">
+          <div class="tag">Transparency</div>
+          <h3>Trust built in</h3>
+          <p>Operational clarity, open data standards, and accountability for every resource we publish.</p>
+        </article>
+      </section>
+
+      <div class="stats" aria-label="Umuda impact previews">
+        <div class="stat">
+          <strong>12+</strong>
+          <span>Countries with local responder partners informing the relaunch.</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Support model designed for crises that unfold in real time.</span>
+        </div>
+        <div class="stat">
+          <strong>People-first</strong>
+          <span>Guided by dignity, accessibility, and equitable access to aid.</span>
+        </div>
+      </div>
     </div>
-    <div class="pill">New chapter, coming soon</div>
-    <h1>Building a brighter digital home.</h1>
-    <p>
-      We are crafting the next experience for
-      <span class="highlight">umuda.org</span>.
-    </p>
-    <p>Check back soon for updates and an early peek at what's next.</p>
   </main>
 </body>
 </html>
