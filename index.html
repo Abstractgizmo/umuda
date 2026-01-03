@@ -1,1 +1,121 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Umuda.org | Coming Soon</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --text: #e6edf3;
+      --accent: #4fd1c5;
+      --muted: #8b949e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(79, 209, 197, 0.12), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(111, 132, 255, 0.14), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      padding: 2rem;
+    }
+
+    .card {
+      background-color: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      max-width: 640px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4fd1c5, #6f84ff);
+      display: grid;
+      place-items: center;
+      color: #0d1117;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 12px 32px rgba(79, 209, 197, 0.25);
+    }
+
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(1.8rem, 2vw + 1rem, 2.6rem);
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    p {
+      margin: 0.4rem 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, 0.08);
+      color: var(--accent);
+      margin: 1rem 0;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Umuda.org coming soon">
+    <div class="logo" aria-label="Umuda logo">
+      <div class="logo-mark">U</div>
+      <span>umuda.org</span>
+    </div>
+    <div class="pill">New chapter, coming soon</div>
+    <h1>Building a brighter digital home.</h1>
+    <p>
+      We are crafting the next experience for
+      <span class="highlight">umuda.org</span>.
+    </p>
+    <p>Check back soon for updates and an early peek at what's next.</p>
+  </main>
+</body>
+</html>
