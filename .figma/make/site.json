@@ -1,0 +1,11 @@
+{
+  "title": "Çimen CV",
+  "description": "Creates a personalized CV website showcasing professional experience and skills to enhance online presence and attract potential employers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
