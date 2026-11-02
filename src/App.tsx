@@ -18,6 +18,7 @@ const LOCALES: { code: Locale; label: string }[] = [
 
 const EMAIL = 'ismail.cimen@gmail.com'
 const PHONE = '+41 (0) 77 991 86 77'
+const PORTFOLIO = 'https://call-me-ish.figma.site/'
 
 type Role = {
   years: string
@@ -89,15 +90,15 @@ const T: Record<Locale, Content> = {
       { years: '08/2022 — 10/2022', org: 'Steiner AG', meta: 'Zürich, CH', title: 'Product / Experience Designer', bullets: ['Designed user experiences for a digital platform in real estate and construction', 'Transformed traditional industry processes into simpler digital workflows', 'Designed solutions for cost estimation, task management, marketing and planning'] },
       { years: '07/2019 — 08/2022', org: 'Various international clients', title: 'Design Contractor / Freelance Designer', bullets: ['UX/UI and interaction design for digital products and websites', 'Information architecture, navigation design and wireframing', 'Graphic design, marketing materials and visual communication', 'Solved complex interface, usability and user-flow challenges'] },
       { years: '07/2018 — 06/2019', org: 'Legartis Technology AG', meta: 'Zürich, CH', title: 'UX Designer', bullets: ['Designed complex legal-tech workflows from wireframes to production-ready UI', 'Co-developed the product with engineers, designers and corporate attorneys', 'Built and maintained design systems across web, marketing and print'] },
-      { years: '10/2017 — 01/2018', org: 'DeinDeal AG', meta: 'Zürich, CH', title: 'Senior User Experience Designer', bullets: ['Customer-centred UX design for deindeal.ch and mystore.ch', 'UX/UI concept for web applications', 'Design of the iOS and Android applications', 'Optimisation of user flows and interactions', '[Add user research / testing]', '[Add measurable improvement]'] },
+      { years: '10/2017 — 01/2018', org: 'DeinDeal AG', meta: 'Zürich, CH', title: 'Senior User Experience Designer', bullets: ['Customer-centred UX design for deindeal.ch and mystore.ch', 'UX/UI concept for web applications', 'Design of the iOS and Android applications', 'Optimisation of user flows and interactions'] },
       { years: '06/2016 — 09/2017', org: 'CarHub', meta: 'Beverly Hills, US', title: 'Senior Lead Designer · Founding Member', bullets: ['Built the product from early concept phase to first beta', 'Developed and shipped the first beta within twelve months', 'Ownership of information architecture, UX/UI and visual design', 'Design management and coordination of design-led product development', 'Direct collaboration with and reporting to the CEO', 'Interface between development, sales, data and operations', 'Helped shape a digital marketplace for new and used vehicles'] },
       { years: '11/2011 — 09/2016', org: 'EF Education First', meta: 'Zürich, CH', title: 'Lead Designer — UI/UX, Interaction, Graphic & Information Architecture', bullets: ['Ownership of digital product and experience design', 'UX/UI, interaction design and information architecture', 'Development of design systems, frameworks and visual standards', 'Concept, research, user testing and usability', 'Photography, typography and visual communication', 'Facilitation of workshops and creative working sessions', 'Collaboration with interdisciplinary product and engineering teams', 'Reporting to the VP Digital Marketing'] },
       { years: '12/2011 — 01/2014', org: 'Lost in Reality', meta: 'Zürich, CH', title: 'Designer', bullets: ['Concept of location-based storytelling experiences', 'Co-development of a web-based publishing platform', 'Design of location-aware digital user experiences', 'Product concept from the earliest development phase', 'Connecting storytelling, interaction design and technology'] },
       { years: '09/2009 — 02/2010', org: 'TU Delft — Faculty of Industrial Design', meta: 'Delft, NL', title: 'Teaching Assistant', bullets: ['Guiding and coaching design students through their projects', 'Support across design and development processes', 'Focus on visual identity and design communication', 'Support for collaboration with external project partners'] },
     ],
     education: [
-      { title: 'Master of Arts — Design for Interaction', place: 'TU Delft', years: '2007 — 2010', note: 'Diploma', main: true },
-      { title: 'Bachelor of Arts — Industrial Design', place: 'TU Eindhoven', years: '2002 — 2006', note: 'Diploma', main: true },
+      { title: 'Master of Science — Design for Interaction', place: 'TU Delft', years: '2007 — 2010', note: 'Diploma', main: true },
+      { title: 'Bachelor of Science — Industrial Design', place: 'TU Eindhoven', years: '2002 — 2006', note: 'Diploma', main: true },
       { title: 'Digital Media Design', place: 'HKU Utrecht', years: '2008 — 2009', note: '2 semesters' },
       { title: 'Master of Philosophy — Kant, Logic & Cognition (course)', place: 'University of Amsterdam (UvA)', years: '2008 — 2009', note: '1 semester' },
       { title: 'Mechanical Engineering', place: 'Fontys Eindhoven', years: '2001 — 2002', note: '1 semester' },
@@ -164,8 +165,8 @@ const T: Record<Locale, Content> = {
       { years: '09/2009 — 02/2010', org: 'TU Delft — Fakultät Industrial Design', meta: 'Delft, NL', title: 'Tutor', bullets: ['Begleitung und Coaching von Designstudierenden; Schwerpunkt visuelle Identität und Designkommunikation'] },
     ],
     education: [
-      { title: 'Master of Arts — Design for Interaction', place: 'TU Delft', years: '2007 — 2010', note: 'Diplom', main: true },
-      { title: 'Bachelor of Arts — Industrial Design', place: 'TU Eindhoven', years: '2002 — 2006', note: 'Diplom', main: true },
+      { title: 'Master of Science — Design for Interaction', place: 'TU Delft', years: '2007 — 2010', note: 'Diplom', main: true },
+      { title: 'Bachelor of Science — Industrial Design', place: 'TU Eindhoven', years: '2002 — 2006', note: 'Diplom', main: true },
       { title: 'Digital Media Design', place: 'HKU Utrecht', years: '2008 — 2009', note: '2 Semester' },
       { title: 'Master of Philosophy — Kant, Logic & Cognition (Kurs)', place: 'Universität Amsterdam (UvA)', years: '2008 — 2009', note: '1 Semester' },
       { title: 'Mechanical Engineering', place: 'Fontys Eindhoven', years: '2001 — 2002', note: '1 Semester' },
@@ -267,6 +268,7 @@ export default function App() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
+            <a href={PORTFOLIO} className="label rounded-full border border-signal px-4 py-2 text-signal transition-colors hover:bg-signal hover:text-ink">Portfolio ↗</a>
             {/* Language toggle */}
             <div className="flex items-center rounded-full border border-hair p-0.5">
               {LOCALES.map((l) => (
@@ -322,6 +324,12 @@ export default function App() {
                   <Rich text={p} />
                 </p>
               ))}
+            </div>
+
+            <div className="mt-8">
+              <a href={PORTFOLIO} className="label inline-flex rounded-full bg-signal px-6 py-3 text-ink transition-transform hover:-translate-y-0.5">
+                {locale === 'de' ? 'Meine Arbeiten ansehen ↗' : 'Explore my portfolio ↗'}
+              </a>
             </div>
 
             {/* Main-stage stats — see the `stats` array (marked EDIT PER JOB APPLICATION) */}
