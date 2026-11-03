@@ -61,21 +61,17 @@ const T: Record<Locale, Content> = {
     headlinePre: 'Call me',
     heroKicker: 'Winterthur · Senior Digital Product Designer — UX/UI · Interaction · Graphic',
     heroLead:
-      'Some years ago — never mind how long precisely — having little or no clue and nothing particular to interest me, I thought I would design about a little and see what the fuss is about.',
+      'Call me Ishmael. I’m a senior product and UX designer based in Winterthur.',
     heroParas: [
-      'Senior product and experience designer with many years of experience developing **digital products, services and user-centred systems**.',
-      'Broad experience in **UX/UI, interaction design, product strategy, design systems, research and prototyping** — from first idea to implementation.',
-      'Conceptually strong, pragmatic in execution and experienced in **interdisciplinary and international teams**.',
-      'Especially drawn to complex challenges where **design, technology and social value** come together — in teams that not only develop good ideas but ship them.',
+      'I combine **research, interaction design and design systems** to take products from early questions to implementation.',
+      'My experience spans **education at EF, legal technology at Legartis, e-commerce at DeinDeal and product development at CarHub**.',
+      'I work closely with **product managers, engineers and domain experts**, testing ideas through prototypes and staying involved through delivery.',
     ],
     ambassador: 'Xbox Ambassador',
     sayHello: 'Say hello',
     stats: [
-      ['Shipped', '100+ designs'],
-      ['Reached', '1B+ users'],
       ['Experience', '20+ years'],
       ['Based', 'Winterthur · C-permit'],
-      ['Nationality', 'NL / TR'],
       ['Languages', 'EN · NL · TR · DE'],
     ],
     nav: ['Work', 'Education', 'Toolkit'],
@@ -230,7 +226,7 @@ function Row({ left, children, className = '' }: { left: ReactNode; children: Re
 }
 
 export default function App() {
-  const [locale, setLocale] = useState<Locale>('de')
+  const [locale, setLocale] = useState<Locale>('en')
   const t = T[locale]
   const [hash, setHash] = useState(() => window.location.hash)
 
@@ -305,12 +301,19 @@ export default function App() {
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-10 px-6 pb-16 pt-[50px] lg:grid-cols-[1fr_360px] lg:gap-12 lg:pb-24">
           <div className="flex flex-col justify-center">
             <p className="label mb-6 text-paper-dim">{t.heroKicker}</p>
+            {locale === 'en' ? (
+              <h1 className="font-display text-5xl font-normal leading-[1.08] tracking-tight text-paper sm:text-6xl">
+                I turn complex information into <span className="text-signal">clear, useful digital experiences.</span>
+              </h1>
+            ) : (
             <h1 className="font-display text-6xl font-light italic leading-[0.86] tracking-tight text-paper sm:text-7xl lg:text-8xl">
               {t.headlinePre}
               <br />
               <span className="font-black not-italic text-signal">Ishmael.</span>
               {t.headlinePost ? <span className="font-light italic"> {t.headlinePost}</span> : null}
             </h1>
+
+            )}
 
             {/* Lead — the prominent opening statement */}
             <p className="mt-8 max-w-2xl font-display text-xl leading-snug text-paper sm:text-2xl">
